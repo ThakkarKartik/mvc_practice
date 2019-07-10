@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WebPractice.Xamarin" CodeBehind="Xamarin.svc.cs" %>

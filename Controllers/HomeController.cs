@@ -30,27 +30,32 @@ namespace WebPractice.Controllers
         {
             return View(user);
         }
-        [HttpPost]
-        public String AndroidLogin(string txtEmail, string txtPass)
+        public ActionResult UserList()
+        {
+            var userList = db.tblUsers.ToList();
+            return View(userList);
+        }
+       
+        public string AndroidLogin(string txtEmail="", string txtPass="")
         {
             tblUser user = db.tblUsers.SingleOrDefault(ob => ob.Email == txtEmail || ob.Password == txtPass);
             if (user != null)
-                return "True";// txtEmail + " - " + txtPass; Json("True", JsonRequestBehavior.AllowGet);
+                return "True";// txtEmail + " - " + txtPass; 
+            //return Json("True", JsonRequestBehavior.AllowGet);
             else
-                return "False";//Json("False", JsonRequestBehavior.AllowGet);
+                return "False";//
+            //return Json("False", JsonRequestBehavior.AllowGet);
         }
-        public ActionResult About()
+        public ActionResult Create()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Create(tblUser user)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            db.tblUsers.Add(user);
+            db.SaveChanges();
+            return RedirectToAction("UserList");
         }
 
 
