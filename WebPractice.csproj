@@ -149,23 +149,23 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IXamarin.cs" />
-    <Compile Include="Models\PracticeModel.Context.cs">
+    <Compile Include="Models\PracticeDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PracticeModel.Context.tt</DependentUpon>
+      <DependentUpon>PracticeDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PracticeModel.cs">
+    <Compile Include="Models\PracticeDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PracticeModel.tt</DependentUpon>
+      <DependentUpon>PracticeDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PracticeModel.Designer.cs">
+    <Compile Include="Models\PracticeDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PracticeModel.edmx</DependentUpon>
+      <DependentUpon>PracticeDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\tblUser.cs">
-      <DependentUpon>PracticeModel.tt</DependentUpon>
+      <DependentUpon>PracticeDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xamarin.svc.cs">
@@ -182,25 +182,19 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\PracticeModel.Context.tt">
+    <Content Include="images\user2.png" />
+    <Content Include="Models\PracticeDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PracticeModel.edmx</DependentUpon>
-      <LastGenOutput>PracticeModel.Context.cs</LastGenOutput>
+      <DependentUpon>PracticeDBModel.edmx</DependentUpon>
+      <LastGenOutput>PracticeDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PracticeModel.tt">
+    <Content Include="Models\PracticeDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PracticeModel.edmx</DependentUpon>
-      <LastGenOutput>PracticeModel.cs</LastGenOutput>
+      <DependentUpon>PracticeDBModel.edmx</DependentUpon>
+      <LastGenOutput>PracticeDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="Xamarin.svc" />
     <Content Include="_readme\annotations.txt" />
-    <EntityDeploy Include="Models\PracticeModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PracticeModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\PracticeModel.edmx.diagram">
-      <DependentUpon>PracticeModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -223,6 +217,13 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Models\PracticeDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PracticeDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PracticeDBModel.edmx.diagram">
+      <DependentUpon>PracticeDBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

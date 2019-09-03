@@ -13,10 +13,10 @@ namespace WebPractice.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PracticeDBEntities : DbContext
+    public partial class PracticeDBEF : DbContext
     {
-        public PracticeDBEntities()
-            : base("name=PracticeDBEntities")
+        public PracticeDBEF()
+            : base("name=PracticeDBEF")
         {
         }
     

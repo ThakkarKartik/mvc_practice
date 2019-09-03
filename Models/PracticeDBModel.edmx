@@ -39,7 +39,7 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityContainer Name="PracticeDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PracticeDBEF" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
         </EntityContainer>
       </Schema>
@@ -47,7 +47,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PracticeDBModelStoreContainer" CdmEntityContainer="PracticeDBEntities">
+        <EntityContainerMapping StorageEntityContainer="PracticeDBModelStoreContainer" CdmEntityContainer="PracticeDBEF">
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="PracticeDBModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">

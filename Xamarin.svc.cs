@@ -12,7 +12,7 @@ namespace WebPractice
     // NOTE: In order to launch WCF Test Client for testing this service, please select Xamarin.svc or Xamarin.svc.cs at the Solution Explorer and start debugging.
     public class Xamarin : IXamarin
     {
-        PracticeDBEntities db = new PracticeDBEntities();
+        PracticeDBEF db = new PracticeDBEF();
         public string UserLogin(string uid, string pass)
         {
             //Xamarin api = new Xamarin();
