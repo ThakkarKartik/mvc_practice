@@ -1,0 +1,26 @@
+﻿@model WebPractice.Models.tblProduct
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2 class="card-title">Add New Product</h2>
+<div class="btn btn-dark" style="margin:0px 0px 20px 0px">
+    @Html.ActionLink("View Your Products", "ViewProd", "ClientProduct")
+</div>
+@* HTML.<> Executes the code and
+    URL.<> Return the URL of given Action Link *@
+<div class="col-lg-10">
+    @using (Html.BeginForm("Index", "ClientProduct", FormMethod.Post))
+    {
+        @Html.EditorFor(model => model.ProdName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Product Name" } })
+        <br />
+        @*@Html.DropDownListFor(ViewData.Cat, new { htmlAttributes = new { @class = "form-control", placeholder = "Select Category" } })*@
+        <br />
+        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Product Name" } })
+        <br />
+        @Html.EditorFor(model => model.ProdDesc, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Product Name" } })
+        <br />
+        <input type="submit" class="btn btn-success" />
+    }
+</div>
+

@@ -4,69 +4,124 @@
     ViewBag.Title = "UserList";
 }
 
-   
+
 <h1> User List </h1>
 <br />
-    <div class="container">
+<div class="container">
 
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ContactNo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Password)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ProfPic)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.IsActive)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreatedOn)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
+    <table class="table" id="tabContent" name="tabContent">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfPic)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th> Actions</th>
+            </tr>
+        </thead>
+        @{ 
+            int i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@Html.DisplayFor(modelItem => item.ProfPic)" style="height:60px; width:60px" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a href="mailto:@Html.DisplayFor(modelItem => item.Email)">
                         @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ContactNo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Password)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProfPic)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedOn)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
-                    </td>
-                </tr>
-            }
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNo)
+                </td>
 
-        </table>
-    </div>
+                <td id="ActiveContent">
+                    @{
+                        i++;
+                    }
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" checked="@item.IsActive" id="chkActive[@i]" onchange="return activate(@item.UserID)">
+                            <label class="custom-control-label" for="chkActive[@i]"></label>
+                        </div>
+                    @*<a href="@Url.Action("Active","Home",new { id = item.UserID })">
+                            <img src="~/images/@aPath" style="height:20px; width:20px" />
+                        </a>*@
+                </td>
+                <td>
+                    @{
+                        string dd = item.CreatedOn.Value.ToString("dd/MMMM/yyyy");
+                    }
+                    @Html.DisplayFor(modelItem => dd)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Home", new { id = item.UserID })">
+                        <img src="~/images/edit.png" style="height:20px; width:20px" />
+                    </a>
+                    |
+                    <a href="@Url.Action("Delete", "Home", new { id = item.UserID })" onclick="return confirm('Are you sure ?')">
+                        <img src="~/images/delete.png" style="height:20px; width:20px" />
+                    </a>
+                    |
+                    <a href="@Url.Action("Details", "Home", new { id = item.UserID })">
+                        <img src="~/images/details.png" style="height:20px; width:20px" />
+                    </a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script>
+        function activate(id) {
+            //alert("@Url.Action("Active", "Home")"+"/"+id);
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "@Url.Action("Active", "Home")" + "/" + id,
+                    //data: $("tabContent").serialize(),
+                    success: function (response) {
+                        //alert("Success - " + response.responseText);
+                        //document.getElementById('ActiveContent').reload(true);
+                        // $("tabContent").html(data);
+                        if (response == true) {
+                            alert('Account Activated');
+                        }
+                        else {
+                            alert('Account Deactivated');
+                        }
+
+                        //location.reload(true);
+                    },
+                    failure: function (response) {
+                            alert('Fail -' + response.responseText);
+                        },
+                    error: function (response) {
+                            alert('Error -' + response.responseText);
+                        }
+                    }
+            );
+        }
+</script>

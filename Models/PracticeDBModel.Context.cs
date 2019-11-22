@@ -26,5 +26,8 @@ namespace WebPractice.Models
         }
     
         public virtual DbSet<tblUser> tblUsers { get; set; }
+        public virtual DbSet<tblCategory> tblCategories { get; set; }
+        public virtual DbSet<tblProdImage> tblProdImages { get; set; }
+        public virtual DbSet<tblProduct> tblProducts { get; set; }
     }
 }

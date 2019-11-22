@@ -14,6 +14,29 @@ namespace WebPractice.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public JsonResult Active(int id)
+        {
+            tblUser user = db.tblUsers.SingleOrDefault(ob => ob.UserID == id);
+            if (user.IsActive == true)
+            {
+                user.IsActive = false;
+            }
+            else
+            {
+                user.IsActive = true;
+            }
+            db.SaveChanges();
+            return Json(user.IsActive,JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Delete(int id)
+        {
+            tblUser user = db.tblUsers.SingleOrDefault(ob => ob.UserID == id);
+            db.tblUsers.Remove(user);
+            db.SaveChanges();
+            return RedirectToAction("UserList");
+        }
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
