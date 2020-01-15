@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Net;
+using System.Net.Mail;
 using System.Web.Mvc;
 using WebPractice.Models;
 
@@ -14,7 +16,28 @@ namespace WebPractice.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult ForgetPassword(string txtForgetEmail)
+        {
+            MailMessage Msg = new MailMessage("YourEmailAaddress", txtForgetEmail);
+            Msg.Subject = "Password Recovery";
+            Msg.Body = "Your OTP is : <h3>" + 1234 + "</h3>";
+            Msg.IsBodyHtml = true;
 
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+            NetworkCredential MyCredentials = new NetworkCredential("EmailAddress", "Password");
+            smtp.Credentials = MyCredentials;
+
+            smtp.Send(Msg);
+            Session["OTP"] = "1234";
+            return View();
+        }
         [HttpPost]
         public JsonResult Active(int id)
         {

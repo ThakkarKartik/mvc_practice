@@ -289,6 +289,7 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\ClientProduct\Index.cshtml" />
     <Content Include="Views\ClientProduct\ViewProd.cshtml" />
+    <Content Include="Views\Home\ForgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
