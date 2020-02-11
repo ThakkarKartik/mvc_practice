@@ -9,6 +9,11 @@
         <EntityTypeShape EntityType="PracticeDBModel.tblCategory" Width="1.5" PointX="3.75" PointY="0.75" />
         <EntityTypeShape EntityType="PracticeDBModel.tblProdImage" Width="1.5" PointX="3.75" PointY="3.75" />
         <EntityTypeShape EntityType="PracticeDBModel.tblProduct" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PracticeDBModel.CityMaster" Width="1.5" PointX="10.875" PointY="1" />
+        <EntityTypeShape EntityType="PracticeDBModel.CountryMaster" Width="1.5" PointX="6.375" PointY="1" />
+        <EntityTypeShape EntityType="PracticeDBModel.StateMaster" Width="1.5" PointX="8.625" PointY="0.5" />
+        <AssociationConnector Association="PracticeDBModel.FK_CityMaster_StateMaster" />
+        <AssociationConnector Association="PracticeDBModel.FK_StateMaster_CountryMaster" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,84 @@
+﻿@model WebPractice.Models.tblUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a href="@Url.Action("List","Admin")" class="btn btn-primary">
+                <i class="fa fa-step-backward"></i>
+            </a>
+            
+        </h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <div class="row">
+                <div class="col-md-4" style="text-align:center">
+                    @if (Model.ProfPic == null)
+                    {
+                        <img src="~/images/user2.png" class="img-thumbnail" id="userimage" />
+                    }
+                    else
+                    {
+                        <img src="~/images/@Html.DisplayFor(model => model.ProfPic)" class="img-thumbnail" id="userimage" />
+                        <br />
+                    }
+                    <br />
+                    <p>
+                        Member since <b> @Model.CreatedOn.Value.Year </b>
+                    </p>
+                    <br />
+
+
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <h3 class="text-info">@Html.DisplayFor(model => model.Name)'s Profile</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-mail-bulk"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="mailto:@Html.DisplayFor(model => model.Email)">
+                                <h5>@Html.DisplayFor(model => model.Email)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <i class="fa fa-1x fa-phone"></i>
+                        </div>
+                        <div class="col-6">
+                            <a href="tel:@Html.DisplayFor(model => model.ContactNo)">
+                                <h5>@Html.DisplayFor(model => model.ContactNo)</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+
+                    <div class="row">
+                        <br /><br />
+                        <div class="alert-danger" style="margin-top:40px; margin-left:10px">
+                            @{
+                                if (Model.IsActive == true)
+                                {
+                                    <a href="@Url.Action("Activate","Admin")" class="btn btn-danger"> Deactivate Account </a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div> 
+    </div>
+</div>
+

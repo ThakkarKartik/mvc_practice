@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "AddNew";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Add New Admin</h6>
+    </div>
+    <div class="card-body">
+        <form class="user">
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" name="txtFirstName" placeholder="First Name">
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="txtLastName" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-8 mb-3 mb-sm-0">
+                    <input type="email" class="form-control" name="txtEmail" placeholder="Email Address">
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <input type="email" class="form-control" name="txtContactNo" placeholder="Contact Number">
+                </div>
+
+            </div>
+                <div class="form-group row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        @Html.DropDownList("ddCountry", ViewBag.Country as SelectList, "Select Country", new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4 mb-3 mb-sm-0" id="divstate">
+                        <select id="ddState" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-sm-4 mb-3 mb-sm-0" id="divcity">
+                        <select id="ddCity" class="form-control"></select>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="password" class="form-control" name="txtPassword" placeholder="Password">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" name="txtRepeatPassword" placeholder="Repeat Password">
+                    </div>
+                </div>
+                <input type="submit" value="Create Admin" class="btn btn-success" />
+</form>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ddCountry').change(function () {
+           // alert("Aavi Gayu");
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("GetState","Admin")",
+                data: { cid: $('#ddCountry').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#ddState').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
+                    }
+                    $('#ddState').focus();
+                }
+            });
+        });
+
+        $('#ddState').change(function () {
+           //alert("Aavi Gayu");
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("getCity","Admin")",
+                data: { sid: $('#ddState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#ddCity').append('<option value=' + data[i].Value + '>' + data[i].Text + '</option>');
+                    }
+                    $('#ddCity').focus();
+                }
+            });
+        });
+
+    });
+
+</script>
+
+

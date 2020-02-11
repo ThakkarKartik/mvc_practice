@@ -29,5 +29,8 @@ namespace WebPractice.Models
         public virtual DbSet<tblCategory> tblCategories { get; set; }
         public virtual DbSet<tblProdImage> tblProdImages { get; set; }
         public virtual DbSet<tblProduct> tblProducts { get; set; }
+        public virtual DbSet<CityMaster> CityMasters { get; set; }
+        public virtual DbSet<CountryMaster> CountryMasters { get; set; }
+        public virtual DbSet<StateMaster> StateMasters { get; set; }
     }
 }
