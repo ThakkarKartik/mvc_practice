@@ -8,14 +8,12 @@ namespace WebPractice.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
-      
         PracticeDBEF dc = new PracticeDBEF();
         // GET: Admin/Admin
         public ActionResult Index()
         {
             return View();
         }
-
         public ActionResult List()
         {
             var User = dc.tblUsers.ToList();
@@ -24,6 +22,8 @@ namespace WebPractice.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             tblUser user = dc.tblUsers.SingleOrDefault(ob => ob.UserID == id);
+            var prods =  (from ob in dc.tblProducts where ob.UserID == user.UserID select ob).ToList();
+            ViewBag.Products = prods;   // as IEnumerable<tblProduct>;
             return View(user);
         }
         public ActionResult AddNew()

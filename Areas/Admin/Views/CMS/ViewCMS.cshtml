@@ -1,0 +1,17 @@
+﻿@model WebPractice.Models.tblCM
+
+@{
+    ViewBag.Title = "ViewCMS";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ViewCMS</h2>
+
+<div>
+    <h2>@Html.DisplayNameFor(model => model.Title)</h2>
+    <hr />
+    
+    <p>@Html.Raw(Model.Content)</p>
+    
+    
+</div>

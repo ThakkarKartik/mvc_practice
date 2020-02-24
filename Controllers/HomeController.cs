@@ -12,10 +12,12 @@ namespace WebPractice.Controllers
     public class HomeController : Controller
     {
         readonly PracticeDBEF db = new PracticeDBEF();
+        
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult ForgetPassword(string txtForgetEmail)
         {
@@ -25,10 +27,11 @@ namespace WebPractice.Controllers
             {
                 Session["LoginUserID"] = user.UserID;
 
-                /*   MailMessage Msg = new MailMessage("YourEmailAaddress", txtForgetEmail);
+                  MailMessage Msg = new MailMessage("keenconveyance@gmail.com", txtForgetEmail);
                    Msg.Subject = "Password Recovery";
                    Msg.Body = "Your OTP is : <h3>" + 1234 + "</h3>";
                    Msg.IsBodyHtml = true;
+                    
 
                    SmtpClient smtp = new SmtpClient();
                    smtp.Host = "smtp.gmail.com";
@@ -37,10 +40,10 @@ namespace WebPractice.Controllers
                    smtp.EnableSsl = true;
                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                   NetworkCredential MyCredentials = new NetworkCredential("EmailAddress", "Password");
+                   NetworkCredential MyCredentials = new NetworkCredential("keenconveyance@gmail.com", "nkp12345");
                    smtp.Credentials = MyCredentials;
 
-                   smtp.Send(Msg); */
+                   smtp.Send(Msg); 
             
                 Session["OTP"] = "1234";
                 return View();

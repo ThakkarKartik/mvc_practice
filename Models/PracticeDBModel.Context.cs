@@ -32,5 +32,6 @@ namespace WebPractice.Models
         public virtual DbSet<CityMaster> CityMasters { get; set; }
         public virtual DbSet<CountryMaster> CountryMasters { get; set; }
         public virtual DbSet<StateMaster> StateMasters { get; set; }
+        public virtual DbSet<tblCM> tblCMS { get; set; }
     }
 }

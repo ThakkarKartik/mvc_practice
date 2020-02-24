@@ -37,6 +37,16 @@
           <Property Name="CatName" Type="varchar" MaxLength="30" />
           <Property Name="CreatedOn" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblCMS">
+          <Key>
+            <PropertyRef Name="CMSID" />
+          </Key>
+          <Property Name="CMSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="20" />
+          <Property Name="Content" Type="varchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="tblProdImage">
           <Key>
             <PropertyRef Name="ProdImageID" />
@@ -100,6 +110,7 @@
           <EntitySet Name="CountryMaster" EntityType="Self.CountryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCMS" EntityType="Self.tblCMS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProdImage" EntityType="Self.tblProdImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
@@ -145,6 +156,7 @@
             <End Role="CountryMaster" EntitySet="CountryMasters" />
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
+          <EntitySet Name="tblCMS" EntityType="PracticeDBModel.tblCM" />
         </EntityContainer>
         <EntityType Name="tblCategory">
           <Key>
@@ -227,6 +239,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tblCM">
+          <Key>
+            <PropertyRef Name="CMSID" />
+          </Key>
+          <Property Name="CMSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -303,6 +325,17 @@
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCMS">
+            <EntityTypeMapping TypeName="PracticeDBModel.tblCM">
+              <MappingFragment StoreEntitySet="tblCMS">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CMSID" ColumnName="CMSID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
