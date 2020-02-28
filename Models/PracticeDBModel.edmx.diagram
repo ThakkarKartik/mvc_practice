@@ -15,6 +15,7 @@
         <AssociationConnector Association="PracticeDBModel.FK_CityMaster_StateMaster" />
         <AssociationConnector Association="PracticeDBModel.FK_StateMaster_CountryMaster" />
         <EntityTypeShape EntityType="PracticeDBModel.tblCM" Width="1.5" PointX="6.375" PointY="3.75" />
+        <EntityTypeShape EntityType="PracticeDBModel.tblInquiry" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

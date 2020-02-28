@@ -1,0 +1,24 @@
+﻿@model WebPractice.Models.tblInquiry
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2> 
+    @Model.Subject
+</h2>
+<br />
+<p>
+    @Model.Query
+</p>
+<br />
+<br />
+<form method="post" action="@Url.Action("Detail","AdminInq", new { id = Model.InqID })">
+<textarea name="txtReply">
+    
+</textarea>
+    <br />
+    <br />
+    <input type="submit" class="btn btn-primary" value="Reply" />
+</form>

@@ -47,6 +47,23 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="tblInquiry">
+          <Key>
+            <PropertyRef Name="InqID" />
+          </Key>
+          <Property Name="InqID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Subject" Type="varchar" MaxLength="30" />
+          <Property Name="Query" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="Reply" Type="varchar" MaxLength="500" />
+          <Property Name="ReplyBy" Type="int" />
+          <Property Name="RepliedOn" Type="datetime" />
+          <Property Name="isReplied" Type="bit" />
+        </EntityType>
         <EntityType Name="tblProdImage">
           <Key>
             <PropertyRef Name="ProdImageID" />
@@ -111,6 +128,7 @@
           <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCMS" EntityType="Self.tblCMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInquiry" EntityType="Self.tblInquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProdImage" EntityType="Self.tblProdImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
@@ -157,6 +175,7 @@
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
           <EntitySet Name="tblCMS" EntityType="PracticeDBModel.tblCM" />
+          <EntitySet Name="tblInquiries" EntityType="PracticeDBModel.tblInquiry" />
         </EntityContainer>
         <EntityType Name="tblCategory">
           <Key>
@@ -249,6 +268,23 @@
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="tblInquiry">
+          <Key>
+            <PropertyRef Name="InqID" />
+          </Key>
+          <Property Name="InqID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Query" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Reply" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyBy" Type="Int32" />
+          <Property Name="RepliedOn" Type="DateTime" Precision="3" />
+          <Property Name="isReplied" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -336,6 +372,24 @@
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="CMSID" ColumnName="CMSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInquiries">
+            <EntityTypeMapping TypeName="PracticeDBModel.tblInquiry">
+              <MappingFragment StoreEntitySet="tblInquiry">
+                <ScalarProperty Name="isReplied" ColumnName="isReplied" />
+                <ScalarProperty Name="RepliedOn" ColumnName="RepliedOn" />
+                <ScalarProperty Name="ReplyBy" ColumnName="ReplyBy" />
+                <ScalarProperty Name="Reply" ColumnName="Reply" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Query" ColumnName="Query" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="InqID" ColumnName="InqID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
