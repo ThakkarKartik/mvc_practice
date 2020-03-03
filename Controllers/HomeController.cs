@@ -15,6 +15,11 @@ namespace WebPractice.Controllers
         
         public ActionResult Index()
         {
+            if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+            {
+                ViewBag.UserName = Request.Cookies["UserName"].Value;
+                ViewBag.Password = Request.Cookies["Password"].Value;
+            }
             return View();
         }
 
@@ -82,19 +87,28 @@ namespace WebPractice.Controllers
             return RedirectToAction("UserList");
         }
         [HttpPost]
-        public ActionResult Index(FormCollection form)
+        public ActionResult Index(FormCollection form, string chkRemember)
         {
             string txtEmail = form["txtEmail"];
             string txtPass = form["txtPassword"];
-
+            //string chkRemember = form["chkRemember"];
             tblUser user = db.tblUsers.SingleOrDefault(ob => ob.Email == txtEmail || ob.Password == txtPass);
             if (user != null)
             {
                 Session["UserID"] = user.UserID;
+                if (chkRemember == "on")
+                {
+                    Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(30);
+                    Response.Cookies["Password"].Expires = DateTime.Now.AddDays(30);
+                    Response.Cookies["UserName"].Value = txtEmail;
+                    Response.Cookies["Password"].Value = txtPass;
+                }
                 return RedirectToAction("UserProfile", user);
             }
             else
+            {
                 return View();
+            }
         }
         public ActionResult UserProfile(tblUser user)
         {

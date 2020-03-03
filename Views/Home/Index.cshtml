@@ -9,13 +9,17 @@
 <form action="@Url.Action("Index","Home")" method="post">
     <div class="form-group">
         <label for="txtEmail">Email address</label>
-        <input type="email" class="form-control" id="txtEmail" name="txtEmail" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="email" class="form-control" id="txtEmail" value="@ViewBag.UserName" name="txtEmail" aria-describedby="emailHelp" placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
         <label for="txtPassword">Password</label>
-        <input type="password" name="txtPassword" class="form-control" id="txtPassword" placeholder="Password">
+        <input type="password" name="txtPassword" class="form-control" value="@ViewBag.Password" id="txtPassword" placeholder="Password">
     </div>
+    <div class="form-group">
+        <input type="checkbox" name="chkRemember" class="form-check" id="chkRemember"/> Remember Me
+    </div>
+
     <div class="row">
         <div class="col-1">
             <input type="submit" class="btn btn-primary" value="Signin" />
@@ -23,7 +27,7 @@
         <div class="col-2">
             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#FPModal">
                 Forget Password
-            </button>        
+            </button>
         </div>
     </div>
 </form>

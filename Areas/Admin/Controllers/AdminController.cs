@@ -12,11 +12,12 @@ namespace WebPractice.Areas.Admin.Controllers
         // GET: Admin/Admin
         public ActionResult Index()
         {
-            ViewBag.UserCount = (from ob in dc.tblUsers select ob).ToList().Count().ToString();
+            ViewBag.UserCount = (from ob in dc.tblUsers select ob).ToList().Count.ToString();
             ViewBag.ActiveUserCount = (from ob in dc.tblUsers where ob.IsActive == true select ob).ToList().Count().ToString();
             ViewBag.ProdCount = (from ob in dc.tblProducts select ob).ToList().Count().ToString();
             ViewBag.CatCount  = (from ob in dc.tblCategories select ob).ToList().Count().ToString();
 
+            
             return View();
         }
         public ActionResult SampleChart()
