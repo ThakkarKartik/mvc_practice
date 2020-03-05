@@ -12,14 +12,16 @@ namespace WebPractice.Areas.Admin.Controllers
         PracticeDBEF dc = new PracticeDBEF();
         public ActionResult Index()
         {
+            var TitleList = from ob in dc.tblCMS select ob.Title;
+            ViewBag.Titles = TitleList;
             return View();
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult Index(string BlogContent)
+        public ActionResult Index(string BlogContent, string txtTitle)
         {
             tblCM cms = new tblCM();
-            cms.Title = "CMS1";
+            cms.Title = txtTitle;
             cms.Content = BlogContent;
             cms.CreatedOn = DateTime.Now;
             cms.IsActive = true;
@@ -28,12 +30,20 @@ namespace WebPractice.Areas.Admin.Controllers
             ViewBag.Content = BlogContent;
             return RedirectToAction("ViewCMS",new {Title = "CMS1" });
         }
-        public ActionResult ViewCMS(string Title)
+        public ActionResult ViewCMS(int id=1)
         {
-            tblCM cms = dc.tblCMS.SingleOrDefault(ob => ob.Title == Title);
+            var TitleList = from ob in dc.tblCMS select ob;
+            ViewBag.CMS = TitleList;
+            tblCM cms = dc.tblCMS.SingleOrDefault(ob => ob.CMSID == id);
             return View(cms);
         }
-
-
+        [HttpPost, ValidateInput(false)]
+        public ActionResult ViewCMS(string BlogContent, int id)
+        {
+            tblCM cms = dc.tblCMS.SingleOrDefault(ob => ob.CMSID == id);
+            cms.Content = BlogContent;
+            dc.SaveChanges();
+            return RedirectToAction("ViewCMS","CMS");
+        }
     }
 }

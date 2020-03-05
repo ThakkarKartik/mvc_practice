@@ -24,11 +24,24 @@
             <h6 class="m-0 font-weight-bold text-primary"> CMS Creation Page</h6>
         </div>
         <div class="card-body">
-            <textarea name="BlogContent" style="height:600px">
-        </textarea>
+            Page Title : 
+            <input type="text" name="txtTitle" list="Titles" class="form-control" />
+            <datalist id="Titles">
+                @foreach (string item in ViewBag.Titles)
+                { 
+                    <option value="@item"/>
+                }
+            </datalist>
         </div>
-        <input type="submit" value="Save" class="btn btn-success btn-lg" />
-    </form>
+        <div class="card-body">
+            <textarea name="BlogContent" style="height:600px">
+            </textarea>
+        </div>
+        <div class="card-body">
+
+            <input type="submit" value="Save" class="btn btn-success col-lg-3 offset-4" />
+            </div>
+</form>
 </div>
 
 

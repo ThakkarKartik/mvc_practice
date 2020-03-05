@@ -5,13 +5,50 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>ViewCMS</h2>
 
-<div>
-    <h2>@Html.DisplayNameFor(model => model.Title)</h2>
-    <hr />
-    
-    <p>@Html.Raw(Model.Content)</p>
-    
-    
+@section link
+{
+    <link href="~/AdminContent/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/AdminContent/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <script src="~/Scripts/tinymce/tinymce.js">
+
+    </script>
+}
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: "image media link table",
+    });</script>
+
+<div class="card shadow mb-4">
+    <form method="post">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"> CMS Edit Page</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <input type="hidden" value="@Model.CMSID" name="id" />
+                    Page Title :
+                    <br />
+                    @foreach (var item in ViewBag.CMS)
+                    {
+            <div style="margin-left:5px">
+                <a href="@Url.Action("ViewCMS", "CMS", new { id = item.CMSID })"> @item.Title</a> <span> | </span>
+            </div>
+                    }
+            </div>
+        </div>
+        <div class="card-body">
+            <textarea name="BlogContent" id="BlogContent" style="height:600px">
+              @Model.Content
+            </textarea>
+        </div>
+        <div class="card-body">
+            <input type="submit" value="Update" class="btn btn-success col-lg-3 offset-4" />
+        </div>
+    </form>
+
+  
 </div>
+
+

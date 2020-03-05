@@ -69,7 +69,22 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="@Url.Action("Index","AdminInq")"> Inquiries </a>
+                <a class="nav-link" href="@Url.Action("Index","AdminInq")">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Inquiry</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>CMS Pages</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("Index","CMS")">Add New</a>
+                        <a class="collapse-item" href="@Url.Action("ViewCMS","CMS")">View/Edit</a>
+                    </div>
+                </div>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block" />

@@ -42,7 +42,7 @@
             <PropertyRef Name="CMSID" />
           </Key>
           <Property Name="CMSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="20" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
           <Property Name="Content" Type="varchar(max)" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
@@ -174,8 +174,8 @@
             <End Role="CountryMaster" EntitySet="CountryMasters" />
             <End Role="StateMaster" EntitySet="StateMasters" />
           </AssociationSet>
-          <EntitySet Name="tblCMS" EntityType="PracticeDBModel.tblCM" />
           <EntitySet Name="tblInquiries" EntityType="PracticeDBModel.tblInquiry" />
+          <EntitySet Name="tblCMS" EntityType="PracticeDBModel.tblCM" />
         </EntityContainer>
         <EntityType Name="tblCategory">
           <Key>
@@ -258,16 +258,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tblCM">
-          <Key>
-            <PropertyRef Name="CMSID" />
-          </Key>
-          <Property Name="CMSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" />
-        </EntityType>
         <EntityType Name="tblInquiry">
           <Key>
             <PropertyRef Name="InqID" />
@@ -284,6 +274,16 @@
           <Property Name="ReplyBy" Type="Int32" />
           <Property Name="RepliedOn" Type="DateTime" Precision="3" />
           <Property Name="isReplied" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblCM">
+          <Key>
+            <PropertyRef Name="CMSID" />
+          </Key>
+          <Property Name="CMSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -364,17 +364,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblCMS">
-            <EntityTypeMapping TypeName="PracticeDBModel.tblCM">
-              <MappingFragment StoreEntitySet="tblCMS">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="CMSID" ColumnName="CMSID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblInquiries">
             <EntityTypeMapping TypeName="PracticeDBModel.tblInquiry">
               <MappingFragment StoreEntitySet="tblInquiry">
@@ -390,6 +379,17 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="InqID" ColumnName="InqID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCMS">
+            <EntityTypeMapping TypeName="PracticeDBModel.tblCM">
+              <MappingFragment StoreEntitySet="tblCMS">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CMSID" ColumnName="CMSID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

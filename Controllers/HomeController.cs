@@ -103,6 +103,11 @@ namespace WebPractice.Controllers
                     Response.Cookies["UserName"].Value = txtEmail;
                     Response.Cookies["Password"].Value = txtPass;
                 }
+                else
+                {
+                    Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+                }
                 return RedirectToAction("UserProfile", user);
             }
             else
