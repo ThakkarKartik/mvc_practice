@@ -181,6 +181,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PracticeDBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Services.cs" />
     <Compile Include="Models\StateMaster.cs">
       <DependentUpon>PracticeDBModel.tt</DependentUpon>
     </Compile>
