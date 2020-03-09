@@ -44,8 +44,8 @@
                         <a class="dropdown-item" href="@Url.Action("ViewClient","ClientProduct")">Client View</a>
                     </div>
                 </li>
-                <li>
-                    <a class="dropdown-item" href="@Url.Action("Index","Inquiry")">Contact Us</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Inquiry")">Contact Us</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="@Url.Action("search","Home")" method="post">
@@ -62,7 +62,7 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
             <br />
-            <a href="@Url.Action("Index","Admin")"> Admin Panel </a>
+            <a href="@Url.Action("Index","Admin/Admin")"> Admin Panel </a>
         </footer>
     </div>
 

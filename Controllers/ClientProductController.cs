@@ -42,20 +42,6 @@ namespace WebPractice.Controllers
                         };
 
             return View(Prods);
-
-            //var Prods = from ob in dc.tblProducts
-            //            join ob2 in dc.tblUsers
-            //            on ob.UserID equals ob2.UserID
-            //            select new
-            //            {
-            //                Name = ob.ProdName,
-            //                UName = ob2.Name,
-            //                Desc = ob.ProdDesc,
-            //                Price = ob.Price
-            //            };
-
-            //ViewBag.Pr = Prods.ToList();
-            //return View();
         }
     }
 }

@@ -25,7 +25,6 @@ namespace WebPractice.Areas.Admin.Controllers
             cms.Content = BlogContent;
             cms.CreatedOn = DateTime.Now;
             cms.IsActive = true;
-            cms.Password = Services.Encryptdata(Form["Password"]);
             dc.tblCMS.Add(cms);
             dc.SaveChanges();
             ViewBag.Content = BlogContent;
