@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Paytm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Paytm</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="txtName" class="col-form-label"> Name :</label>
+        <input type="text" name="txtName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="txtEmail" class="col-form-label"> Email :</label>
+        <input type="text" name="txtEmail" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="txtContactNo" class="col-form-label"> Contact No :</label>
+        <input type="text" name="txtContactNo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="txtAount" class="col-form-label"> Amount :</label>
+        <input type="text" name="txtAmount" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" name="btnPay" value="Checkout" class="btn btn-secondary" />
+    </div>
+</form>

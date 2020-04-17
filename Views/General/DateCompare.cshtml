@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "DateCompare";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DateCompare</h2>
+<form method="post">
+    <div class="form-group">
+        <input type="date" class="form-control" id="startDate" name="startDate" placeholder=" From Date" />
+    </div>
+    <div class="form-group">
+        <input type="date" class="form-control" id="endDate" name="endDate" placeholder=" To Date" onblur="compare();" />
+    </div>
+    <div class="form-group">
+        <input type="button" value=" Check " class="form-control" onclick="compare();" />
+    </div>
+
+</form>
+<script>
+    function compare()
+{
+    var startDt = document.getElementById("startDate").value;
+    var endDt = document.getElementById("endDate").value;
+
+        if ((new Date(startDt).getTime() < new Date(endDt).getTime())) {
+            alert("Prper");
+        }
+        else {
+            alert("Not Proper");
+        }
+}
+</script>
