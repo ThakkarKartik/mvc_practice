@@ -7,7 +7,7 @@ namespace WebPractice.Models
 {
     public static class Key
     {
-        public static string merchantKey = "@3vsTQg5FgMXbJa8";
-        public static string merchantId = "IoDCTR52765233231755";
+        public static string merchantKey = "YourKey";
+        public static string merchantId = "YourID";
     }
 }
